@@ -1,6 +1,7 @@
 import accounts.*;
 import people.AccountOwner;
 import people.AccountOwnerFactory;
+import transfers.Transferservice;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -20,14 +21,6 @@ void main() {
         }
         IO.println(account.getAccountNumber());
     }
-
-    IO.println(accounts.get(0).getBalance());
-    accounts.get(0).add(460);
-    accounts.get(1).sub(730);
-    IO.println((accounts.get(0).getBalance()));
-    IO.println(accounts.get(1).getBalance());
-    accounts.get(2).add(50);
-    IO.println(accounts.get(2).getBalance());
-    accounts.get(3).sub(250);
-    IO.println(accounts.get(3).getBalance());
+    Transferservice.transfer(accounts.get(1), accounts.get(0), 300);
+    Transferservice.transfer(accounts.get(0), accounts.get(2), 100);
 }

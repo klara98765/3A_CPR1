@@ -11,10 +11,13 @@ public class BusinessAccount extends BankAccount{
     }
 
     @Override
-    public void sub(double amount) {
+    public String sub(double amount) {
         double newAmount=this.balance - (amount * 1.01);
         if(newAmount>0){
             this.balance=newAmount;
+            return "success";
+        }else{
+            return "failed";
         }
     }
 }

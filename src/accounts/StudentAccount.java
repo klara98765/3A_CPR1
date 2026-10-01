@@ -16,10 +16,13 @@ public class StudentAccount extends BankAccount{
     }
 
     @Override
-    public void sub(double amount) {
+    public String sub(double amount) {
         double newAmount=this.balance-amount;
         if(newAmount>=-5000){
             this.balance=newAmount;
+            return "success";
+        }else{
+            return "failed";
         }
 
     }
