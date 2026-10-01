@@ -1,5 +1,6 @@
 import accounts.*;
 import people.AccountOwner;
+import people.AccountOwnerFactory;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -7,16 +8,17 @@ void main() {
 
     List<BankAccount> accounts = new ArrayList<>();
 
-    AccountOwner owner = new AccountOwner("Rhiannon","Jones");
-    accounts.add(new CurrentAccount(owner));
-    accounts.add(new StudentAccount(owner, 500, "Delta"));
-    accounts.add(new SavingAccount(owner, 100));
-    accounts.add(new BusinessAccount(owner,300));
+    AccountOwner owner = AccountOwnerFactory.CreateAccountOwner("Rhiannon","Jones");
+    accounts.add(CurrentAccountFactory.CreateCurrentAccount(owner));
+    accounts.add(StudentAccountFactory.CreateStudentAccount(owner, 500, "Delta"));
+    accounts.add(SavingAccountFactory.CreateSavingAccount(owner, 100));
+    accounts.add(BusinessAccountFactory.CreateBusinesssAccount(owner, 300));
 
     for (BankAccount account: accounts){
         if (account instanceof StudentAccount){
             IO.println(((StudentAccount) account).getSchool());
         }
+        IO.println(account.getAccountNumber());
     }
 
     IO.println(accounts.get(0).getBalance());

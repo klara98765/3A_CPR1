@@ -3,11 +3,11 @@ package accounts;
 import people.AccountOwner;
 
 public class BusinessAccount extends BankAccount{
-    public BusinessAccount(AccountOwner owner){
-        super(owner);
+    public BusinessAccount(String number,AccountOwner owner){
+        super(number, owner);
     }
-    public BusinessAccount(AccountOwner owner, double balance){
-        super(owner, balance);
+    public BusinessAccount(String number,AccountOwner owner, double balance){
+        super(number, owner, balance);
     }
 
     @Override

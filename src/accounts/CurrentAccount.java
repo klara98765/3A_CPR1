@@ -3,10 +3,10 @@ package accounts;
 import people.AccountOwner;
 
 public class CurrentAccount extends BankAccount{
-    public CurrentAccount(AccountOwner owner){
-        super(owner);
+    public CurrentAccount(String number, AccountOwner owner){
+        super(number, owner);
     }
-    public CurrentAccount(AccountOwner owner, double balance){
-        super(owner, balance);
+    public CurrentAccount(String number, AccountOwner owner, double balance){
+        super(number, owner, balance);
     }
 }

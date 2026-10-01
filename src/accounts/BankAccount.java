@@ -11,12 +11,14 @@ public abstract class BankAccount {
 
     protected double balance;
 
-    public BankAccount(AccountOwner owner) {
+    public BankAccount(String number,AccountOwner owner) {
+        this.accountNumber=number;
         this.owner = owner;
         this.balance = 0;
     }
 
-    public BankAccount(AccountOwner owner, double balance) {
+    public BankAccount(String number, AccountOwner owner, double balance) {
+        this.accountNumber=number;
         this.owner = owner;
         this.balance = balance;
     }
@@ -24,6 +26,7 @@ public abstract class BankAccount {
     public double getBalance() {
         return balance;
     }
+    public String getAccountNumber(){ return accountNumber; }
 
     public void sub(double amount){
         double newAmount=this.balance-amount;
