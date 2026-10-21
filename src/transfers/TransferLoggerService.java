@@ -12,7 +12,7 @@ public class TransferLoggerService {
         transferHistory.add(TransferFactory.CreateTransfer(accountFrom, accountTo, amount));
     }
 
-    public List<Transfer> getTransferHistory() {
+    public static List<Transfer> getTransferHistory() {
         return transferHistory;
     }
 }

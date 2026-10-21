@@ -7,7 +7,7 @@ import notifiers.ConsoleNotifier;
 import notifiers.Notifier;
 
 public class Transferservice {
-    static Notifier notifier = new ConsoleNotifier();
+    public static Notifier notifier = new ConsoleNotifier();
     public static void transfer(BankAccount account1, BankAccount account2, double amount){
         notifier.notify("Sub amount is " + amount);
         notifier.notify(account1.getAccountNumber()+" balance: "+account1.getBalance());

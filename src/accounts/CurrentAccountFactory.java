@@ -1,5 +1,6 @@
 package accounts;
 
+import accounts.services.AccountNumberService;
 import people.AccountOwner;
 
 public class CurrentAccountFactory {
