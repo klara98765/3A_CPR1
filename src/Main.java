@@ -1,6 +1,7 @@
 import accounts.*;
 import accounts.serialization.*;
 import accounts.services.AccountService;
+import accounts.services.LoggingAcountService;
 import notifiers.ConsoleNotifier;
 import people.AccountOwner;
 import people.AccountOwnerFactory;
@@ -16,6 +17,9 @@ void main() {
     AccountService.createSavingAccount(owner, 100);
     AccountService.createBusinessAccount(owner, 300);
     AccountService.createBusinessAccount(owner);
+    LoggingAcountService.createCurrentAccount(owner, false);
+    LoggingAcountService.createCurrentAccount2(owner);
+    LoggingAcountService.createCurrentAccount(owner, true);
 
     List<BankAccount> accounts=AccountService.getAccounts();
     List<BankAccountSerialize> serializeList=new ArrayList<>();
