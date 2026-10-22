@@ -10,16 +10,13 @@ import people.OwnerService;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
-
+    AccountService as=new AccountService();
     AccountOwner owner = OwnerService.createAccountOwner("Rhiannon","Jones");
-    AccountService.createCurrentAccount(owner);
-    AccountService.createStudentAccount(owner, 500, "Delta");
-    AccountService.createSavingAccount(owner, 100);
-    AccountService.createBusinessAccount(owner, 300);
-    AccountService.createBusinessAccount(owner);
-    LoggingAcountService.createCurrentAccount(owner, false);
-    LoggingAcountService.createCurrentAccount2(owner);
-    LoggingAcountService.createCurrentAccount(owner, true);
+    as.createCurrentAccount(owner);
+    as.createStudentAccount(owner, 500, "Delta");
+    as.createSavingAccount(owner, 100);
+    as.createBusinessAccount(owner, 300);
+    as.createBusinessAccount(owner);
 
     List<BankAccount> accounts=AccountService.getAccounts();
     List<BankAccountSerialize> serializeList=new ArrayList<>();

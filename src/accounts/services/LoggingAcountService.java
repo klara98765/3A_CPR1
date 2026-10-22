@@ -3,29 +3,21 @@ package accounts.services;
 import accounts.BankAccount;
 import people.AccountOwner;
 
-import java.time.LocalTime;
+public class LoggingAcountService implements IAccountService{
 
-public class LoggingAcountService{
+    private final AccountService delegate;
 
-    public static BankAccount createCurrentAccount(AccountOwner owner, boolean both) {
-        BankAccount account;
-        System.out.println("Vytvářím účet");
-        if(both){
-            account = createCurrentAccount2(owner);
-        }else{
-            account = AccountService.createCurrentAccount(owner);
-        }
-
-        System.out.println("Účet vytvořen");
-        return account;
+    public LoggingAccountService(AccountService delegate) {
+        this.delegate = delegate;
     }
 
-    public static BankAccount createCurrentAccount2(AccountOwner owner){
-        System.out.println("Vytvářím účet: "+ LocalTime.now());
+    @Override
+    public BankAccount createCurrentAccount(AccountOwner owner) {
+        System.out.println("Před vytvořením účtu");
 
-        BankAccount account = AccountService.createCurrentAccount(owner);
+        BankAccount account = delegate.createCurrentAccount(AccountOwner owner);
 
-        System.out.println("Účet vytvořen: "+LocalTime.now());
+        System.out.println("Po vytvoření účtu");
         return account;
     }
 
