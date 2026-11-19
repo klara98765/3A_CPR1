@@ -20,56 +20,56 @@ public class AccountService implements IAccountService{
         savingAccountFactory=saaf;
     }
 
-    public BankAccount createCurrentAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner, balance);
+    public BankAccount createCurrentAccount(AccountOwner owner, String currency, double balance) {
+        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner, currency, balance);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
-    public BankAccount createCurrentAccount(AccountOwner owner) {
-        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner);
-        accounts.add(bankAccount);
-
-        return bankAccount;
-    }
-
-    public BankAccount createStudentAccount(AccountOwner owner, double balance, String school) {
-        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, balance, school);
+    public BankAccount createCurrentAccount(AccountOwner owner, String currency) {
+        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner, currency);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public BankAccount createStudentAccount(AccountOwner owner, String school) {
-        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, school);
+    public BankAccount createStudentAccount(AccountOwner owner, String currency, double balance, String school) {
+        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, currency, balance, school);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public BankAccount createSavingAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner, balance);
+    public BankAccount createStudentAccount(AccountOwner owner, String currency, String school) {
+        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, currency, school);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public BankAccount createSavingAccount(AccountOwner owner) {
-        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner);
+    public BankAccount createSavingAccount(AccountOwner owner, String currency, double balance) {
+        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner, currency, balance);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public BankAccount createBusinessAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner, balance);
+    public BankAccount createSavingAccount(AccountOwner owner, String currency) {
+        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner, currency);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public BankAccount createBusinessAccount(AccountOwner owner) {
-        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner);
+    public BankAccount createBusinessAccount(AccountOwner owner, String currency, double balance) {
+        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner, currency, balance);
+        accounts.add(bankAccount);
+
+        return bankAccount;
+    }
+
+    public BankAccount createBusinessAccount(AccountOwner owner, String currency) {
+        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner, currency);
         accounts.add(bankAccount);
 
         return bankAccount;

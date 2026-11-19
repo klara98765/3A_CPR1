@@ -14,10 +14,10 @@ public class LoggingAccountService implements IAccountService {
     }
 
     @Override
-    public BankAccount createCurrentAccount(AccountOwner owner) {
+    public BankAccount createCurrentAccount(AccountOwner owner, String currency) {
         System.out.println("Před vytvořením účtu");
 
-        BankAccount account = delegate.createCurrentAccount(owner);
+        BankAccount account = delegate.createCurrentAccount(owner, currency);
 
         System.out.println("Po vytvoření účtu");
         return account;

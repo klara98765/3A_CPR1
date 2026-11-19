@@ -5,5 +5,5 @@ import people.AccountOwner;
 
 public interface IAccountService {
 
-    BankAccount createCurrentAccount(AccountOwner owner);
+    BankAccount createCurrentAccount(AccountOwner owner, String currency);
 }

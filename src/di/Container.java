@@ -7,6 +7,8 @@ import accounts.StudentAccountFactory;
 import accounts.serialization.*;
 import accounts.services.AccountNumberService;
 import accounts.services.AccountService;
+import currency.CurrencyConversion;
+import currency.CurrencyList;
 import notifiers.ConsoleNotifier;
 import people.AccountOwnerFactory;
 import people.OwnerService;
@@ -30,5 +32,7 @@ public class Container {
     public BankAccountGsonSerializationService bankAccountGsonSerializationService = new BankAccountGsonSerializationService();
     public BankAccountXml2SerializationService bankAccountXml2SerializationService = new BankAccountXml2SerializationService();
     public ConsoleNotifier consoleNotifier=new ConsoleNotifier();
+    public CurrencyList currencyList=new CurrencyList();
+    public CurrencyConversion currencyConversion = new CurrencyConversion(currencyList, consoleNotifier);
 
 }

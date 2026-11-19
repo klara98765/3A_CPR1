@@ -15,10 +15,10 @@ public class LoggingWithTimeAccountService implements IAccountService {
     }
 
     @Override
-    public BankAccount createCurrentAccount(AccountOwner owner) {
+    public BankAccount createCurrentAccount(AccountOwner owner, String currency) {
         System.out.println("Před vytvořením účtu: "+ LocalDateTime.now());
 
-        BankAccount account = delegate.createCurrentAccount(owner);
+        BankAccount account = delegate.createCurrentAccount(owner, currency);
 
         System.out.println("Po vytvoření účtu: "+LocalDateTime.now());
         return account;

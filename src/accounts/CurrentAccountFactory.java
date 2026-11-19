@@ -10,14 +10,14 @@ public class CurrentAccountFactory {
         accountNumberService=ans;
     }
 
-    public CurrentAccount CreateCurrentAccount(AccountOwner owner, double balance){
+    public CurrentAccount CreateCurrentAccount(AccountOwner owner, String currency, double balance){
         String number= accountNumberService.GenerateAccountNumber();
-        CurrentAccount ba=new CurrentAccount(number, owner, balance);
+        CurrentAccount ba=new CurrentAccount(number, currency, owner, balance);
         return ba;
     }
-    public CurrentAccount CreateCurrentAccount(AccountOwner owner){
+    public CurrentAccount CreateCurrentAccount(AccountOwner owner, String currency){
         String number= accountNumberService.GenerateAccountNumber();
-        CurrentAccount ba=new CurrentAccount(number, owner);
+        CurrentAccount ba=new CurrentAccount(number, currency, owner);
         return ba;
     }
 }

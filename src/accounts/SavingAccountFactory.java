@@ -10,14 +10,14 @@ public class SavingAccountFactory {
         accountNumberService=ans;
     }
 
-    public SavingAccount CreateSavingAccount(AccountOwner owner, double balance){
+    public SavingAccount CreateSavingAccount(AccountOwner owner, String currency, double balance){
         String number= accountNumberService.GenerateAccountNumber();
-        SavingAccount ba=new SavingAccount(number, owner, balance);
+        SavingAccount ba=new SavingAccount(number, currency, owner, balance);
         return ba;
     }
-    public SavingAccount CreateSavingAccount(AccountOwner owner){
+    public SavingAccount CreateSavingAccount(AccountOwner owner, String currency){
         String number= accountNumberService.GenerateAccountNumber();
-        SavingAccount ba=new SavingAccount(number, owner);
+        SavingAccount ba=new SavingAccount(number, currency, owner);
         return ba;
     }
 }

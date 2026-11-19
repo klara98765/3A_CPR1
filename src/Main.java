@@ -17,12 +17,13 @@ void main() {
     Container container=containerFactory.createContainer();
     AccountService accountService=container.accountService;
     OwnerService ownerService=container.ownerService;
+    ConsoleNotifier notifier = container.consoleNotifier;
     AccountOwner owner = ownerService.createAccountOwner("Rhiannon","Jones");
-    accountService.createCurrentAccount(owner);
-    accountService.createStudentAccount(owner, 500, "Delta");
-    accountService.createSavingAccount(owner, 100);
-    accountService.createBusinessAccount(owner, 300);
-    accountService.createBusinessAccount(owner);
+    accountService.createCurrentAccount(owner, "USD");
+    accountService.createStudentAccount(owner, "USD", 500, "Delta");
+    accountService.createSavingAccount(owner, "USD",100);
+    accountService.createBusinessAccount(owner, "USD",300);
+    accountService.createBusinessAccount(owner,"USD");
 
     //IAccountService accountServiceWithLogging=new LoggingAccountService(accountService);
     //accountServiceWithLogging.createCurrentAccount(owner);
@@ -35,14 +36,13 @@ void main() {
     List<BankAccount> accounts=accountService.getAccounts();
     List<BankAccountSerialize> serializeList=new ArrayList<>();
     for (BankAccount account: accounts){
+        notifier.notify(account.getBalance()+" "+account.getCurrency()+
+                " "+container.currencyConversion.convert(account.getCurrency(), "CZK", account.getBalance())+" CZK");
         BankAccountSerialize bac=container.bankAccountSerializeFactory.createBankAccountSerialize(account);
         serializeList.add(bac);
     }
-    ConsoleNotifier notifier = container.consoleNotifier;
     notifier.notify(container.bankAccountJsonSerializationService.serializeall(serializeList));
     notifier.notify(container.bankAccountXmlSerializationService.serializeall(serializeList));
     notifier.notify(container.bankAccountGsonSerializationService.serializeall(serializeList));
     notifier.notify(container.bankAccountXml2SerializationService.serializeall(serializeList));
-    //Transferservice.transfer(accounts.get(1), accounts.get(0), 300);
-    //Transferservice.transfer(accounts.get(0), accounts.get(2), 100);
 }

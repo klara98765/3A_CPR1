@@ -6,12 +6,12 @@ public class StudentAccount extends BankAccount{
 
     private String school;
 
-    public StudentAccount(String number, AccountOwner owner, String school){
-        super(number, owner);
+    public StudentAccount(String number, String currency, AccountOwner owner, String school){
+        super(number, currency, owner);
         this.school=school;
     }
-    public StudentAccount(String number, AccountOwner owner, double balance, String school){
-        super(number, owner, balance);
+    public StudentAccount(String number, String currency, AccountOwner owner, double balance, String school){
+        super(number, currency, owner, balance);
         this.school=school;
     }
 

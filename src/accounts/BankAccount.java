@@ -7,22 +7,27 @@ public abstract class BankAccount {
     private String uuid;
     private String accountNumber;
 
+    private String currency;
+
     private AccountOwner owner;
 
     protected double balance;
 
-    public BankAccount(String number,AccountOwner owner) {
+    public BankAccount(String number, String currency, AccountOwner owner) {
         this.accountNumber=number;
         this.owner = owner;
         this.balance = 0;
+        this.currency=currency;
     }
 
-    public BankAccount(String number, AccountOwner owner, double balance) {
+    public BankAccount(String number, String currency, AccountOwner owner, double balance) {
         this.accountNumber=number;
         this.owner = owner;
         this.balance = balance;
+        this.currency=currency;
     }
 
+    public String getCurrency(){return currency;}
     public double getBalance() {
         return balance;
     }

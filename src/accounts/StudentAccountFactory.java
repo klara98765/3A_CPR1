@@ -10,14 +10,14 @@ public class StudentAccountFactory {
         accountNumberService=ans;
     }
 
-    public StudentAccount CreateStudentAccount(AccountOwner owner, double balance, String school){
+    public StudentAccount CreateStudentAccount(AccountOwner owner, String currency, double balance, String school){
         String number= accountNumberService.GenerateAccountNumber();
-        StudentAccount ba=new StudentAccount(number, owner, balance, school);
+        StudentAccount ba=new StudentAccount(number, currency, owner, balance, school);
         return ba;
     }
-    public StudentAccount CreateStudentAccount(AccountOwner owner, String school){
+    public StudentAccount CreateStudentAccount(AccountOwner owner, String currency, String school){
         String number= accountNumberService.GenerateAccountNumber();
-        StudentAccount ba=new StudentAccount(number, owner, school);
+        StudentAccount ba=new StudentAccount(number, currency, owner, school);
         return ba;
     }
 }
