@@ -15,11 +15,8 @@ import people.OwnerService;
 void main() {
     ContainerFactory containerFactory=new ContainerFactory();
     Container container=containerFactory.createContainer();
-    AccountService accountService=new AccountService(container.currentAccountFactory,
-            container.studentAccountFactory,
-            container.businessAccountFactory,
-            container.savingAccountFactory);
-    OwnerService ownerService=new OwnerService(container.accountOwnerFactory);
+    AccountService accountService=container.accountService;
+    OwnerService ownerService=container.ownerService;
     AccountOwner owner = ownerService.createAccountOwner("Rhiannon","Jones");
     accountService.createCurrentAccount(owner);
     accountService.createStudentAccount(owner, 500, "Delta");
@@ -41,7 +38,7 @@ void main() {
         BankAccountSerialize bac=container.bankAccountSerializeFactory.createBankAccountSerialize(account);
         serializeList.add(bac);
     }
-    ConsoleNotifier notifier = new ConsoleNotifier();
+    ConsoleNotifier notifier = container.consoleNotifier;
     notifier.notify(container.bankAccountJsonSerializationService.serializeall(serializeList));
     notifier.notify(container.bankAccountXmlSerializationService.serializeall(serializeList));
     notifier.notify(container.bankAccountGsonSerializationService.serializeall(serializeList));
