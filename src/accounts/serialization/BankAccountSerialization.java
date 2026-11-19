@@ -3,11 +3,7 @@ package accounts.serialization;
 import java.util.List;
 
 public interface BankAccountSerialization {
-    public static String serialize(BankAccountSerialize bankAccountSerialize){
-        return null;
-    };
+    public String serialize(BankAccountSerialize bankAccountSerialize);
 
-    public static String serializeall(List<BankAccountSerialize> serializeList) {
-        return null;
-    }
+    public String serializeall(List<BankAccountSerialize> serializeList);
 }
