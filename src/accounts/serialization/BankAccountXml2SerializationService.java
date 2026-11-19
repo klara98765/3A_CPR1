@@ -6,13 +6,13 @@ import java.util.List;
 
 public class BankAccountXml2SerializationService implements BankAccountSerialization{
     static XmlMapper xmlMapper = new XmlMapper();
-    public static String serializeall(List<BankAccountSerialize> serializeList){
+    public String serializeall(List<BankAccountSerialize> serializeList){
 
         return xmlMapper.writeValueAsString(serializeList);
 
     }
 
-    public static String serialize(BankAccountSerialize bankAccountSerialize){
+    public String serialize(BankAccountSerialize bankAccountSerialize){
 
         return xmlMapper.writeValueAsString(bankAccountSerialize);
     }

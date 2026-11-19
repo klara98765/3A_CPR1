@@ -7,11 +7,11 @@ import java.util.List;
 public class BankAccountGsonSerializationService implements BankAccountSerialization{
     static Gson gson=new Gson();
 
-    public static String serializeall(List<BankAccountSerialize> serializeList){
+    public String serializeall(List<BankAccountSerialize> serializeList){
         return gson.toJson(serializeList);
     }
 
-    public static String serialize(BankAccountSerialize bankAccountSerialize){
+    public String serialize(BankAccountSerialize bankAccountSerialize){
         return gson.toJson(bankAccountSerialize);
     }
 

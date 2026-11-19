@@ -4,15 +4,20 @@ import accounts.services.AccountNumberService;
 import people.AccountOwner;
 
 public class BusinessAccountFactory {
+    AccountNumberService accountNumberService;
 
-    public static BusinessAccount CreateBusinesssAccount(AccountOwner owner, double balance){
-        String number= AccountNumberService.GenerateAccountNumber();
+    public BusinessAccountFactory(AccountNumberService ans){
+        accountNumberService=ans;
+    }
+
+    public BusinessAccount CreateBusinesssAccount(AccountOwner owner, double balance){
+        String number= accountNumberService.GenerateAccountNumber();
         BusinessAccount ba=new BusinessAccount(number, owner, balance);
         return ba;
     }
 
-    public static BusinessAccount CreateBusinesssAccount(AccountOwner owner){
-        String number= AccountNumberService.GenerateAccountNumber();
+    public BusinessAccount CreateBusinesssAccount(AccountOwner owner){
+        String number= accountNumberService.GenerateAccountNumber();
         BusinessAccount ba=new BusinessAccount(number, owner);
         return ba;
     }

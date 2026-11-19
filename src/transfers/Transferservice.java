@@ -7,8 +7,14 @@ import notifiers.ConsoleNotifier;
 import notifiers.Notifier;
 
 public class Transferservice {
-    public static Notifier notifier = new ConsoleNotifier();
-    public static void transfer(BankAccount account1, BankAccount account2, double amount){
+    public Notifier notifier = new ConsoleNotifier();
+    TransferLoggerService transferLoggerService;
+
+    public Transferservice(TransferLoggerService tls){
+        transferLoggerService=tls;
+    }
+
+    public void transfer(BankAccount account1, BankAccount account2, double amount){
         notifier.notify("Sub amount is " + amount);
         notifier.notify(account1.getAccountNumber()+" balance: "+account1.getBalance());
         notifier.notify(account2.getAccountNumber()+" balance: "+account2.getBalance());
@@ -21,7 +27,7 @@ public class Transferservice {
                     amount = amount * 0.97;
                 }
                 account2.add(amount);
-                TransferLoggerService.addToHistory(account1, account2, amount);
+                transferLoggerService.addToHistory(account1, account2, amount);
             } else {
                 notifier.notify("Bank transfer failed (not enought money).");
             }

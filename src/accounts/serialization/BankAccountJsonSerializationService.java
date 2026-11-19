@@ -4,7 +4,7 @@ package accounts.serialization;
 import java.util.List;
 
 public class BankAccountJsonSerializationService implements BankAccountSerialization{
-    public static String serializeall(List<BankAccountSerialize> bankAccountSerializeList){
+    public String serializeall(List<BankAccountSerialize> bankAccountSerializeList){
         StringBuilder builder=new StringBuilder();
         builder.append("[");
         for(BankAccountSerialize bankAccountSerialize: bankAccountSerializeList){
@@ -16,7 +16,7 @@ public class BankAccountJsonSerializationService implements BankAccountSerializa
         return builder.toString();
     }
 
-    public static String serialize(BankAccountSerialize bankAccountSerialize){
+    public String serialize(BankAccountSerialize bankAccountSerialize){
         StringBuilder builder=new StringBuilder();
         builder.append("{");
         builder.append("\"accountNumber\": ");

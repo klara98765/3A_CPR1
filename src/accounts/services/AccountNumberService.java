@@ -3,7 +3,7 @@ package accounts.services;
 import java.util.Random;
 
 public class AccountNumberService {
-    public static String GenerateAccountNumber(){
+    public String GenerateAccountNumber(){
 
         Random random = new Random();
         int[] vahy = {1, 2, 4, 8, 5, 10, 9, 7, 3, 6};

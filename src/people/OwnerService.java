@@ -6,16 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerService {
-    static List<AccountOwner> people = new ArrayList<>();
+    List<AccountOwner> people = new ArrayList<>();
+    AccountOwnerFactory accountOwnerFactory;
 
-    public static AccountOwner createAccountOwner(String name, String lastname){
-        AccountOwner accountOwner=AccountOwnerFactory.CreateAccountOwner(name, lastname);
+    public OwnerService(AccountOwnerFactory aof){
+        accountOwnerFactory=aof;
+    }
+
+    public AccountOwner createAccountOwner(String name, String lastname){
+        AccountOwner accountOwner=accountOwnerFactory.CreateAccountOwner(name, lastname);
         people.add(accountOwner);
         return accountOwner;
     }
 
 
-    public static List<AccountOwner> getPeople(){
+    public List<AccountOwner> getPeople(){
         return people;
     }
 }

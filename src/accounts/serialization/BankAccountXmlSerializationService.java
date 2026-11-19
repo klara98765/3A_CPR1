@@ -5,7 +5,8 @@ import notifiers.ConsoleNotifier;
 import java.util.List;
 
 public class BankAccountXmlSerializationService implements BankAccountSerialization{
-    public static String serializeall(List<BankAccountSerialize> bankAccountSerializeList){
+
+    public String serializeall(List<BankAccountSerialize> bankAccountSerializeList){
         StringBuilder builder=new StringBuilder();
         builder.append("<root><accountList>");
         for(BankAccountSerialize bankAccountSerialize: bankAccountSerializeList){
@@ -19,7 +20,7 @@ public class BankAccountXmlSerializationService implements BankAccountSerializat
         return builder.toString();
     }
 
-    public static String serialize(BankAccountSerialize bankAccountSerialize){
+    public String serialize(BankAccountSerialize bankAccountSerialize){
         StringBuilder builder=new StringBuilder();
         builder.append(bankAccountSerialize.bankAccountNumber);
         return builder.toString();

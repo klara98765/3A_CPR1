@@ -7,64 +7,75 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountService implements IAccountService{
-    static List<BankAccount> accounts = new ArrayList<>();
+    List<BankAccount> accounts = new ArrayList<>();
+    CurrentAccountFactory currentAccountFactory;
+    StudentAccountFactory studentAccountFactory;
+    BusinessAccountFactory businessAccountFactory;
+    SavingAccountFactory savingAccountFactory;
+
+    public AccountService(CurrentAccountFactory caf, StudentAccountFactory saf, BusinessAccountFactory baf, SavingAccountFactory saaf){
+        currentAccountFactory=caf;
+        studentAccountFactory=saf;
+        businessAccountFactory=baf;
+        savingAccountFactory=saaf;
+    }
 
     public BankAccount createCurrentAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = CurrentAccountFactory.CreateCurrentAccount(owner, balance);
+        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner, balance);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
     public BankAccount createCurrentAccount(AccountOwner owner) {
-        BankAccount bankAccount = CurrentAccountFactory.CreateCurrentAccount(owner);
+        BankAccount bankAccount = currentAccountFactory.CreateCurrentAccount(owner);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createStudentAccount(AccountOwner owner, double balance, String school) {
-        BankAccount bankAccount = StudentAccountFactory.CreateStudentAccount(owner, balance, school);
+        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, balance, school);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createStudentAccount(AccountOwner owner, String school) {
-        BankAccount bankAccount = StudentAccountFactory.CreateStudentAccount(owner, school);
+        BankAccount bankAccount = studentAccountFactory.CreateStudentAccount(owner, school);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createSavingAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = SavingAccountFactory.CreateSavingAccount(owner, balance);
+        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner, balance);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createSavingAccount(AccountOwner owner) {
-        BankAccount bankAccount = SavingAccountFactory.CreateSavingAccount(owner);
+        BankAccount bankAccount = savingAccountFactory.CreateSavingAccount(owner);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createBusinessAccount(AccountOwner owner, double balance) {
-        BankAccount bankAccount = BusinessAccountFactory.CreateBusinesssAccount(owner, balance);
+        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner, balance);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
     public BankAccount createBusinessAccount(AccountOwner owner) {
-        BankAccount bankAccount = BusinessAccountFactory.CreateBusinesssAccount(owner);
+        BankAccount bankAccount = businessAccountFactory.CreateBusinesssAccount(owner);
         accounts.add(bankAccount);
 
         return bankAccount;
     }
 
-    public static List<BankAccount> getAccounts() {
+    public List<BankAccount> getAccounts() {
         return accounts;
     }
 }

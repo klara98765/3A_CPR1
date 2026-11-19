@@ -4,13 +4,19 @@ import accounts.services.AccountNumberService;
 import people.AccountOwner;
 
 public class CurrentAccountFactory {
-    public static CurrentAccount CreateCurrentAccount(AccountOwner owner, double balance){
-        String number= AccountNumberService.GenerateAccountNumber();
+    AccountNumberService accountNumberService;
+
+    public CurrentAccountFactory(AccountNumberService ans){
+        accountNumberService=ans;
+    }
+
+    public CurrentAccount CreateCurrentAccount(AccountOwner owner, double balance){
+        String number= accountNumberService.GenerateAccountNumber();
         CurrentAccount ba=new CurrentAccount(number, owner, balance);
         return ba;
     }
-    public static CurrentAccount CreateCurrentAccount(AccountOwner owner){
-        String number= AccountNumberService.GenerateAccountNumber();
+    public CurrentAccount CreateCurrentAccount(AccountOwner owner){
+        String number= accountNumberService.GenerateAccountNumber();
         CurrentAccount ba=new CurrentAccount(number, owner);
         return ba;
     }
